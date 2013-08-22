@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" ng-app="Workshop01">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>workshop01</title>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/angularjs/1.0.7/angular.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap/3.0.0rc1/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="//cdn.jsdelivr.net/fontawesome/3.2.1/css/font-awesome-ie7.min.css" />
+    <link type="text/css" rel="stylesheet" href="//cdn.jsdelivr.net/fontawesome/3.2.1/css/font-awesome.min.css" />
+    <script type="text/javascript" src="//cdn.jsdelivr.net/underscorejs/1.5.1/underscore-min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.0.3/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap/3.0.0rc1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+</head>
+<body>
+    <div class="container" ng-controller="getCourses">
+        <header>
+            <nav class="navbar">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Workshop01</a>
+                </div>
+                <ul class="nav nav-pills pull-right">
+                    <li class="active navbar-btn"><a id="load" ng-click="loadData()" href="#"><i class="icon-repeat"></i>&nbsp;Load</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="body-content">
+            <ul class="nav nav-tabs">
+                <li ng-repeat="course in data" ng-class="{active: $index == 0}">
+                    <a href="#{{course.name}}" data-toggle="tab">{{course.name}}</a>
+                </li>
+            </ul>
+            <div  id="my-tab-content" class="tab-content">
+                <div ng-repeat="course in data" class="tab-pane" ng-class="{active: $index == 0}" id="{{course.name}}">
+                    <div class="list-group">
+                        <a ng-repeat="name in course.details" ng-click="active = !active" ng-class="{active: active == true}" href="#" class="list-group-item">{{name.name}}</a>
+                    </div>
+                </div>
+            </div>
+        </div><!-- End Body Content -->
+    </div>
+</body>
+</html>
